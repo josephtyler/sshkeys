@@ -15,7 +15,6 @@ unless gem_available? 'etc'
 	unless gets.chomp.downcase == 'n'
 		`sudo gem install etc`
 	end
-	exit
 end
 
 unless gem_available? 'net-ssh'
@@ -23,15 +22,13 @@ unless gem_available? 'net-ssh'
 	unless gets.chomp.downcase == 'n'
 		`sudo gem install net-ssh`
 	end
-	exit
 end
 
 unless gem_available? 'net-scp'
-	print "The gem 'net/ssh' is not installed. Would you like to install it? (y):"
+	print "The gem 'net/scp' is not installed. Would you like to install it? (y):"
 	unless gets.chomp.downcase == 'n'
 		`sudo gem install net-scp`
 	end
-	exit
 end
 
 
