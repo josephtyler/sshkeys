@@ -43,19 +43,19 @@ while password == ''
 end
 
 # Create the remote folder
-Net::SSH.start(host, username, password: password) do |ssh|
+Net::SSH.start(host, username, password) do |ssh|
   puts '> creating remote .ssh folder'
   ssh.exec! 'mkdir ~/.ssh'
 end
 
 # SCP the id_rsa.pub file to remote machine
-Net::SCP.start(host, username, password: password) do |scp|
+Net::SCP.start(host, username, password) do |scp|
   puts '> scp started'
   scp.upload! idrsa_file, ".ssh/"
 end
 
 # Add the id_rsa.pub to the authorized_keys
-Net::SSH.start(host, username, password: password) do |ssh|
+Net::SSH.start(host, username, password) do |ssh|
   puts '> creating authorized_keys and adding your key'
   ssh.exec! 'touch ~/.ssh/authorized_keys'
   ssh.exec! 'chmod 600 ~/.ssh/authorized_keys'
