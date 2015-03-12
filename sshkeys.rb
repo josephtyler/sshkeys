@@ -16,13 +16,13 @@ require_or_fail('net/ssh')
 require_or_fail('net/scp')
 
 # See if id_rsa.pub exists
-unless File.exist? "#{Dir.home}/.ssh/id_rsa.pub"
+unless File.exist? "#{ENV["HOME"]}/.ssh/id_rsa.pub"
   puts "To use this tool, the file id_rsa.pub must exist in \
-      #{Dir.home}/.ssh/. Trying running `ssh-keygen -t rsa`."
+      #{ENV["HOME"]}/.ssh/. Trying running `ssh-keygen -t rsa`."
   exit
 end
 
-idrsa_file = "#{Dir.home}/.ssh/id_rsa.pub"
+idrsa_file = "#{ENV["HOME"]}/.ssh/id_rsa.pub"
 
 host = ''
 while host == ''
